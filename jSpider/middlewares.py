@@ -6,7 +6,28 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import random
+class RandomUserAgent(object):  # 变换 User-Agent
+    """Randomly rotate user agents based on a list of predefined ones"""
+    def __init__(self, agents):
+        self.agents = agents
 
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings.getlist('USER_AGENTS'))
+
+    def process_request(self, request, spider):
+        ua = random.choice(self.agents)
+        request.headers.setdefault('User-Agent', ua)
+
+
+# 暂时不用代理
+# from scrapy.conf import settings
+# class ProxyMiddleware(object):
+#     def process_request(self, request, spider):
+#         request.meta['proxy'] = settings.get('HTTP_PROXY')
+##################################################################
+## 下面的类是自动生成的
 
 class JspiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
