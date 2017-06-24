@@ -5,7 +5,7 @@ from ..items import DoubanItem
 
 
 class DoubanSpider(scrapy.Spider):
-    name = "douban"
+    name = "douban"  # 这里就是 scrapy crawl douban 指的名字
     allowed_domains = ["douban.com"]  # 爬取不会超出这个范围
     start_urls = (
         'https://book.douban.com/tag/%E6%BC%AB%E7%94%BB?start=0&type=T',  # 豆瓣图书标签: 漫画

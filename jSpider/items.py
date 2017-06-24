@@ -12,7 +12,11 @@ class DoubanItem(scrapy.Item):
     link = scrapy.Field()
     info = scrapy.Field()
     desc = scrapy.Field()
-
 class ImageItem(scrapy.Item):
     image_urls = scrapy.Field()
     images = scrapy.Field()
+class UserItem(scrapy.Item):
+    name = scrapy.Field()
+    age = scrapy.Field()
+    gender = scrapy.Field()
+    location = scrapy.Field()

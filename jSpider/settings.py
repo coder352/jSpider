@@ -13,7 +13,7 @@ USE_FILE = False  # 是否将结果写入文件
 FILE_NAME = 'tmp'  # 将结果写入的文件名
 # scrapy crawl douban -o items.json  # 可以用这个来直接将 item 写入 json
 
-USE_MONGO = True  # 是否使用 MongoDB
+USE_MONGO = False  # 是否使用 MongoDB
 MONGO_URI = 'mongodb://localhost:27017/'  # MongoDB URI
 MONGO_DATABASE = 'tmp'  # Database
 MONGO_COLLECTION = 'douban_cartoon'  # Collection's name

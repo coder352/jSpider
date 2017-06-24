@@ -1,4 +1,5 @@
 ### Description
+Scrapy 1.3.3
 要控制好的就是 douban.py 中的 URL 和 Xpath...
 ### Run
 ``` zsh
@@ -10,10 +11,14 @@ scrapy genspider -t basic douban douban.com  # 新建一个爬虫, 生成 spider
 # 修改 items.py 和 douban.py; (items 中默认只有 JspiderItem, 删掉重写)
 # pipelines.py 中修改 MongoDB 的相关东西
 scrapy crawl douban  # 运行项目
+scrapy crawl douban -o tmp.json  # 结果输出到文件, 不推荐, 最好把 ./settings.py 中 的 file 方式启用, 那样会有排版和 json.dumps() 转码
+scrapy crawl douban -o tmp.csv  # 得到 csv 文件
 # 过程是: 运行 douban.py -> 抓取整个网页赋值给 reponse -> parse() 处理 reponse, 将 JspiderItem 的实例 item 的各个成员变量赋值 ->
 # parse() 将 item 传递给 pipelines.py 中的 JspiderPipeline 的方法 process_item()
 # process_item() 这里可以对数据进行处理(也可以不处理), 将数据 return -> 默认是打印出来
 # 其中每个 item 传递后都有 yield item 来进行异步
+
+scrapy runspider douban.py -o tmp.json  # 运行非项目的单独 scrapy 文件
 ```
 ### Tips
 ``` zsh
